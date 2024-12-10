@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+ 
+  overflow-x: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Remove App.css if it exists and move any needed styles here */
+
+/* Layout containers */
+.layout-container {
+  flex: 1;
+  padding: 1rem;
+  margin-top: 64px; /* Navbar height */
+}
+
+.content-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1rem;
+  width: 100%;
+}
+
+/* Water animations */
+.water-drop {
+  width: 20px;
+  height: 20px;
+  background: #60a5fa;
+  border-radius: 50%;
+  position: relative;
+  animation: drop 2s infinite;
+  opacity: 0;
+}
+
+@keyframes drop {
+  0% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+}
+
+.wave {
+  position: relative;
+  opacity: 0.6;
+  animation: wave 2s infinite linear;
+}
+
+@keyframes wave {
+  0% {
+    background-position-x: 0;
+  }
+  100% {
+    background-position-x: 200px;
+  }
+}
+
+.wave::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: linear-gradient(90deg, #60a5fa 0%, #93c5fd 50%, #60a5fa 100%);
+  height: 100%;
+  background-size: 200px 100%;
+}
